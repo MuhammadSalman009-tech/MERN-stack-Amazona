@@ -27,7 +27,7 @@ const products=[
         description:"This is nike bag description.",
         image:"/assets/images/uthappizza.png",
         price:140,
-        rating:4.5,
+        rating:3.5,
         numReviews:13,
         brand:"Nike",
         category:"bag"
@@ -44,12 +44,12 @@ const products=[
         category:"shirt"
     },
     {
-        _id:1,
+        _id:5,
         name:"Puma Slim Pant",
         description:"This is puma pant description.",
         image:"/assets/images/uthappizza.png",
         price:110,
-        rating:4.5,
+        rating:2,
         numReviews:13,
         brand:"Puma",
         category:"pant"
