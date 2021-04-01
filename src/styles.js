@@ -47,6 +47,24 @@ const useStyles=makeStyles(theme=>({
     footer:{
         backgroundColor:theme.palette.background.paper,
         padding:'48px'
-    }
+    },
+    //Product Details page
+    detailImage:{
+        width:'100%',
+        paddingTop:'76.25%',
+    },
+    detailContainer:{
+        backgroundColor:theme.palette.background.paper,
+        marginTop:'32px'
+    },
+    helperText:{
+        marginLeft:'0px'
+    },
+    success:{
+        color:theme.palette.success.main
+    },
+    error:{
+        color:theme.palette.error.main
+    },
 }))
 export default useStyles;
