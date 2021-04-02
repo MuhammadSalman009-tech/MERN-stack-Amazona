@@ -48,6 +48,9 @@ const useStyles=makeStyles(theme=>({
         backgroundColor:theme.palette.background.paper,
         padding:'48px'
     },
+    center:{
+        textAlign:'center'
+    },
     //Product Details page
     detailImage:{
         width:'100%',
@@ -55,7 +58,8 @@ const useStyles=makeStyles(theme=>({
     },
     detailContainer:{
         backgroundColor:theme.palette.background.paper,
-        marginTop:'32px'
+        marginTop:'32px',
+        marginBottom:'32px'
     },
     helperText:{
         marginLeft:'0px'

@@ -14,7 +14,6 @@ function ProductDetails({product}) {
     }
     return (
         <React.Fragment>
-            <Topnav/>
             <Container className={classes.detailContainer}>
                 <Grid container spacing={3}>
                     <Grid item sm={12} md={6} className={classes.detailCol1}>
