@@ -1,10 +1,19 @@
 import * as ActionTypes from "./ActionTypes";
-import products from "../data";
+import axios from "axios";
 export const fetchProducts=()=>dispatch=>{
     dispatch(productsLoading())
-    setTimeout(()=>{
-        dispatch(addProducts(products))
-    },2000)
+    try {
+        return axios.get('/api/products')
+        .then(res=>{
+            const products=res.data;
+            dispatch(addProducts(products))
+        })
+        .catch(error=>{
+            dispatch(productsFailed(error));
+        })
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 export const productsLoading=()=>({
     type:ActionTypes.PRODUCTS_LOADING

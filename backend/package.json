@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "MERN stack ecommerce site",
   "main": "server.js",
-  "type": "module",
   "scripts": {
-    "start": "nodemon --watch backend --watch libs backend/server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",

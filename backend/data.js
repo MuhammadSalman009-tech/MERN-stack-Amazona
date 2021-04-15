@@ -78,4 +78,4 @@ const products=[
         category:"shirt"
     },
 ]
-export default products;
+module.exports=products;
