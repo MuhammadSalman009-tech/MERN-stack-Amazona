@@ -1,0 +1,29 @@
+const fetchProducts=()=>{
+            return fetch("/api/products")
+            .then(response=>{
+                if(response.ok){
+                    return response;
+                }else{
+                    var error=new Error("Error "+response.status+": "+response.statusText);
+                    error.response=response;
+                    throw error;
+                }
+            },(error)=>{
+                const errMsg=new Error(error.message);
+                throw errMsg;
+            })
+            .then(res=>res.json())
+            .then(products=>{
+                console.log(products);
+                this.setState({
+                    productsLoaded:true,
+                    products:products
+                })
+            })
+            .catch(error=>{
+                this.setState({
+                    productsLoaded:true,
+                    productsError:true
+                })
+            })
+        }

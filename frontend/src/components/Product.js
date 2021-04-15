@@ -31,7 +31,7 @@ function Product({product}) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" color="primary" href={`/products/${product._id}`}>View</Button>
+                    <Button size="small" color="primary" component={Link} to={`/products/${product._id}`}>View</Button>
                     <Button size="small" color="primary">Edit</Button>
                 </CardActions>
             </Card>

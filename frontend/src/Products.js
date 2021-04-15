@@ -1,4 +1,4 @@
-import {Container, Grid, Typography} from '@material-ui/core';
+import {Container, Grid} from '@material-ui/core';
 import React from 'react';
 import Product from "./components/Product";
 import useStyles from "./styles";
@@ -7,7 +7,6 @@ import LoadingComponent from './components/LoadingComponent';
 
 
 function Products(props) {
-    console.log(props.productsError)
     const classes=useStyles();
     if(props.productsError){
         return (
@@ -23,7 +22,7 @@ function Products(props) {
                 </main>
             </React.Fragment>
         )
-    }else if(!props.productsIsLoaded){
+    }else if(!props.productsLoaded){
         return (
             <React.Fragment>
             `    <main>

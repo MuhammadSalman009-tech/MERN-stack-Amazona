@@ -1,7 +1,6 @@
 import { Button, CardMedia, Container, CssBaseline, Grid, TextField, Typography, MenuItem } from '@material-ui/core'
 import React from 'react'
 import Rating from './components/Rating';
-import Topnav from './components/Topnav';
 import useStyles from "./styles";
 
 const quantities=[1,2,3,4,5,6];

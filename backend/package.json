@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/MuhammadSalman009-tech/MERN-stack-Amazona#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "eslint": "^7.23.0",
