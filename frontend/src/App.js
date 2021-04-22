@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import { CssBaseline } from '@material-ui/core';
 import { connect } from 'react-redux';
 import {fetchProducts} from "./redux/ActionCreators";
+import Cart from './Cart';
 
 
 const mapDispatchToProps=(dispatch=>({
@@ -43,6 +44,7 @@ class App extends Component {
                         productsError={this.props.productsError}
                         productsLoaded={this.props.productsLoaded}/>} />
                         <Route exact path="/products/:id" component={ProductWithId} />
+                        <Route exact path="/cart/:id?" component={Cart} />
                     </Switch>
                 </BrowserRouter>
                 {/* Rendering Footer Component */}

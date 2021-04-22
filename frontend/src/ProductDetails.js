@@ -1,16 +1,21 @@
 import { Button, CardMedia, Container, CssBaseline, Grid, TextField, Typography, MenuItem } from '@material-ui/core'
 import React from 'react'
+import {useHistory} from "react-router-dom";
 import Rating from './components/Rating';
 import useStyles from "./styles";
 
-const quantities=[1,2,3,4,5,6];
 function ProductDetails({product}) {
     const [quantity,setQuantity]=React.useState(1);
+    const history=useHistory();
     const classes=useStyles();
 
-    const handleChange=(e)=>{
+    const handleQuantityChange=(e)=>{
         setQuantity(e.target.value);
     }
+    const handleAddToCart=()=>{
+        history.push(`/cart/${product._id}?qty=${quantity}`);
+    }
+    
     return (
         <React.Fragment>
             <Container className={classes.detailContainer}>
@@ -33,35 +38,50 @@ function ProductDetails({product}) {
                         
                         <Rating rating={product.rating} reviews={product.numReviews}/>
 
-                        <Typography variant="h5" component="h2" gutterBottom>Quantity</Typography>
-                        <TextField
-                        id={classes.helperText}
-                        select
-                        label="Qty. "
-                        value={quantity}
-                        onChange={handleChange}
-                        helperText="Please select your Quantity"
-                        variant="outlined"
-                        size="small"
-                        >
-                        {quantities.map((quantity) => (
-                            <MenuItem key={quantity} value={quantity}>
-                                {quantity}
-                            </MenuItem>
-                        ))}
-                        </TextField>
+                        
                         <Typography variant="h5" component="h2">
                             Status
                         </Typography>
-                        {product.quantity>0?<Typography className={classes.success}>In Stock</Typography>:<Typography className={classes.error}>Out of STock</Typography>}
+                        {product.quantity>0?
+                        <React.Fragment>
+                            <Typography className={classes.success}>In Stock</Typography>
+                            <Typography variant="h5" component="h2" gutterBottom>Quantity</Typography>
+                            <TextField
+                            id={classes.helperText}
+                            select
+                            label="Qty. "
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                            helperText="Please select your Quantity"
+                            variant="outlined"
+                            size="small"
+                            >
+                            {[...Array(product.quantity).keys()].map((x) => (
+                                <MenuItem key={x+1} value={x+1}>
+                                    {x+1}
+                                </MenuItem>
+                            ))}
+                            </TextField>
+                            <Typography>
+                                <Button variant="contained" color="primary" size="large" onClick={handleAddToCart}>
+                                    Add to Cart
+                                </Button>
+                            </Typography>
+                        </React.Fragment>
+                        :
+                        <React.Fragment>
+                            <Typography className={classes.error}>Out of STock</Typography>
+                            <Typography>
+                                <Button variant="contained" color="primary" size="large" disabled>
+                                    Add to Cart
+                                </Button>
+                            </Typography>
+                        </React.Fragment>
+                        }
                         <Typography className={classes.productPrice} gutterBottom>
                             ${product.price}
                         </Typography>
-                        <Typography>
-                            <Button variant="contained" color="primary" size="large">
-                                Add to Cart
-                            </Button>
-                        </Typography>
+                        
                     </Grid>
                 </Grid>
             </Container>
