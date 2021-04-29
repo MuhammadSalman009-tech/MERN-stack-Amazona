@@ -19,30 +19,29 @@ function Cart(props) {
         }
     },[dispatch,productID,quantity])
     return (
-        <div>
-        {cartItems.length===0?
-        <p>cart is empty</p>:
         <Container maxWidth='lg'>
             <h1>Cart</h1>
             <Grid container spacing={3}>
                 <Grid item xs={8}>
-                    {cartItems.map(item=>(
+                {cartItems.length===0?
+                    <p>cart is empty</p>:
+                    cartItems.map(item=>(
                         <CartItem item={item} key={item.product}/>    
-                    ))}
+                    ))
+                    }
                 </Grid>
+        
                 <Grid item xs={4}>
                     <Typography component='h5' variant='h5' className={classes.totalPrice}>
                     Subtotal ({cartItems.reduce((a,c)=>(a+c.qty),0)} Items) : 
                     ${cartItems.reduce((a,c)=>(a+c.qty*c.price),0)}
                     <br/><br/>
 
-                    <Button variant="contained" color="primary">Checkout</Button> 
+                    <Button variant="contained" color="primary" disabled={cartItems.length===0}>Checkout</Button> 
                     </Typography>
                 </Grid>
-            </Grid>
-        </Container>    
-        }
-        </div>
+            </Grid>    
+        </Container>
     )
 }
 

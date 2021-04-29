@@ -1,13 +1,18 @@
 import React from 'react'
 import { CardContent, CardMedia, MenuItem, TextField, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../redux/actions/cartActions';
+import { addToCart, removeFromCart } from '../redux/actions/cartActions';
 import { useDispatch } from 'react-redux';
 import useStyles from "../styles"
 
 function CartItem({item}) {
     const classes=useStyles();
     const dispatch = useDispatch();
+
+    //remove from cart
+    const removeFromCartHandler=(id)=>{
+        dispatch(removeFromCart(id));
+    }
     return (
         <div className={classes.cartItem}>
             <CardMedia
@@ -22,7 +27,6 @@ function CartItem({item}) {
                 </Typography>
               </CardContent>
               <TextField
-                    id={classes.helperText}
                     select
                     className={`${classes.detailsItem} ${classes.cartItemSelectBox}`}
                     label="Qty. "
@@ -30,7 +34,6 @@ function CartItem({item}) {
                     onChange={(e)=>{
                         dispatch(addToCart(item.product,Number(e.target.value)))
                     }}
-                    helperText="Please select your Quantity"
                     variant="outlined"
                     size="small"
                     >
@@ -44,7 +47,7 @@ function CartItem({item}) {
                     ${item.price} 
                 </Typography>
                 <Typography className={classes.detailsItem}>
-                    <button>Delete</button>
+                    <button onClick={()=>removeFromCartHandler(item.product)}>Delete</button>
                 </Typography>
             </div>
             

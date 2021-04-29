@@ -3,7 +3,7 @@ export const CartItems=(state={
     cartItems:[]
 },action)=>{
     switch (action.type) {
-        case ActionTypes.CRAT_ADD_ITEM:
+        case ActionTypes.CART_ADD_ITEM:
             const item=action.payload;
             const existingItem=state.cartItems.find(x=>x.product===item.product);
             if(existingItem){
@@ -11,6 +11,8 @@ export const CartItems=(state={
             }else{
                 return {...state,cartItems:[...state.cartItems,item]}
             }
+        case ActionTypes.CART_REMOVE_ITEM:
+            return {...state,cartItems:state.cartItems.filter(x=>x.product!==action.payload)}
         default:
             return state;
     }
