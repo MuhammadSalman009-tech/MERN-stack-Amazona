@@ -70,5 +70,40 @@ const useStyles=makeStyles(theme=>({
     error:{
         color:theme.palette.error.main
     },
+    cart:{
+        marginLeft:'auto',
+        color:'#ccc'
+    },
+    //cart
+    totalPrice:{
+        background:'#fff',
+        margin:'10px 0px',
+        padding:'10px'
+    },
+    cartItem: {
+        display: 'flex',
+        margin:'10px 0px',
+        minHeight:'100px',
+        background:'#fff',
+      },
+      details: {
+        display: 'flex',
+        flexDirection: 'row',
+        padding:'10px',
+        width:'100%',
+      },
+      itemName:{
+          flexGrow:'2',
+          margin:'10px',
+          maxWidth:'40%',
+      },
+      detailsItem:{
+          flexGrow:'1',
+          margin:'10px',
+          maxWidth:'20%',
+      },
+      cartItemMedia: {
+        width: 151,
+      },
 }))
 export default useStyles;

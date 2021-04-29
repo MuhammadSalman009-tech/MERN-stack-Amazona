@@ -6,7 +6,7 @@ import Topnav from "./components/Topnav";
 import Footer from './components/Footer';
 import { CssBaseline } from '@material-ui/core';
 import { connect } from 'react-redux';
-import {fetchProducts} from "./redux/ActionCreators";
+import {fetchProducts} from "./redux/actions/productsActions";
 import Cart from './Cart';
 
 

@@ -1,4 +1,4 @@
-import * as ActionTypes from "./ActionTypes";
+import * as ActionTypes from "../ActionTypes";
 import axios from "axios";
 export const fetchProducts=()=>dispatch=>{
     dispatch(productsLoading())

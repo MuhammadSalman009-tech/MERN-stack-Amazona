@@ -11,6 +11,15 @@ app.get('/api/products',(req,res)=>{
     }
     
 });
+app.get('/api/products/:id',(req,res)=>{
+    try {
+        const product=products.find(product=> product._id===parseInt(req.params.id))
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({message:error.message});
+    }
+    
+});
 app.get('/',(req,res)=>{
     res.send("server is ready");
 });
