@@ -1,29 +1,22 @@
+require('dotenv').config();
 const express=require("express");
-const products=require("./data");
+const mongoose=require("mongoose");
+const productRouter = require('./Routes/ProductRoutes');
+const userRouter = require('./Routes/UserRoutes');
 
 const app=express();
 app.use(express.json());
-app.get('/api/products',(req,res)=>{
-    try {
-        res.json(products);
-    } catch (error) {
-        res.status(500).json({message:error.message});
-    }
-    
-});
-app.get('/api/products/:id',(req,res)=>{
-    try {
-        const product=products.find(product=> product._id===parseInt(req.params.id))
-        res.json(product);
-    } catch (error) {
-        res.status(500).json({message:error.message});
-    }
-    
-});
-app.get('/',(req,res)=>{
-    res.send("server is ready");
-});
 
-app.listen(5000,()=>{
-    console.log("serving at http://localhost:5000");
-});
+const PORT=process.env.PORT || 5000;
+//Connection to MongoDB  
+const CONNECTION_URL=`mongodb+srv://${process.env.MOGODB_CREDENDIALS}@cluster0.peuiq.mongodb.net/Amazona?retryWrites=true&w=majority`;
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
+//Listening to Server
+.then(()=>app.listen(PORT,()=>console.log("serving at http://localhost:"+PORT)))
+.catch(error=>console.log("Database Connection Failed "+error));
+
+
+//handling routes
+app.use('/api/users',userRouter);
+app.use('/api/products',productRouter);
+

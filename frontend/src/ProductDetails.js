@@ -1,21 +1,42 @@
 import { Button, CardMedia, Container, CssBaseline, Grid, TextField, Typography, MenuItem } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import {useHistory} from "react-router-dom";
 import Rating from './components/Rating';
 import useStyles from "./styles";
+import {fetchSingleProduct} from "./redux/actions/singleProductActions"
+import LoadingComponent from './components/LoadingComponent';
 
-function ProductDetails({product}) {
+function ProductDetails({match}) {
+    const id=match.params.id;
     const [quantity,setQuantity]=React.useState(1);
     const history=useHistory();
     const classes=useStyles();
+    const disptach=useDispatch();
+    const {singleProductError,singleProductLoaded,product} = useSelector(state => state.SingleProduct);
 
+    useEffect(()=>{
+        disptach(fetchSingleProduct(id))
+    },[disptach,id])
     const handleQuantityChange=(e)=>{
         setQuantity(e.target.value);
     }
     const handleAddToCart=()=>{
         history.push(`/cart/${product._id}?qty=${quantity}`);
     }
-    
+    if(singleProductError){
+        return (
+            <Container maxWidth="md" className={classes.cardGrid}>
+                <h1 className={classes.center}>{singleProductError}</h1>
+            </Container>
+        )
+    }else if(!singleProductLoaded){
+        return (
+            <Container maxWidth="md" className={classes.cardGrid}>
+                <LoadingComponent/>
+            </Container>
+        )
+    }else{
     return (
         <React.Fragment>
             <Container className={classes.detailContainer}>
@@ -86,7 +107,7 @@ function ProductDetails({product}) {
                 </Grid>
             </Container>
         </React.Fragment>
-    )
+    )}
 }
 
 export default ProductDetails

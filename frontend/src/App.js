@@ -30,7 +30,7 @@ class App extends Component {
     
     render(){
         const ProductWithId=({match})=>{
-            return <ProductDetails product={this.props.products.filter((product)=> product._id===parseInt(match.params.id))[0]}/>
+            return <ProductDetails match={match}/>
         }
         return (
             

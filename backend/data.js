@@ -1,6 +1,21 @@
-const products=[
+const { hashSync } = require("bcrypt");
+
+module.exports.users=[
     {
-        _id:1,
+        name:'Muhammad Salman',
+        email:'salmansumra009@gmail.com',
+        password:hashSync("salman009",12),
+        isAdmin:true,
+    },
+    {
+        name:'Adeel Yaqoob',
+        email:'adeelyaqoob009@gmail.com',
+        password:hashSync("adeel009",12),
+        isAdmin:false,
+    },
+];
+module.exports.products=[
+    {
         name:"Nike Shirt",
         shortDescription:"This is nike shirt description.",
         description:"This is nike shirt description.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.",
@@ -13,7 +28,6 @@ const products=[
         category:"shirt"
     },
     {
-        _id:2,
         name:"Nike shoes",
         shortDescription:"This is nike shoes description",
         description:"This is nike shoes description.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.",
@@ -26,7 +40,6 @@ const products=[
         category:"shoes"
     },
     {
-        _id:3,
         name:"Nike bag",
         shortDescription:"This is nike bag description.",
         description:"This is nike bag description.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.",
@@ -39,7 +52,6 @@ const products=[
         category:"bag"
     },
     {
-        _id:4,
         name:"Puma shirt",
         shortDescription:"This is puma shirt description.",
         description:"This is puma shirt description.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.",
@@ -52,7 +64,6 @@ const products=[
         category:"shirt"
     },
     {
-        _id:5,
         name:"Puma Slim Pant",
         shortDescription:"This is puma pant description.",
         description:"This is puma pant description.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.",
@@ -65,7 +76,6 @@ const products=[
         category:"pant"
     },
     {
-        _id:6,
         name:"Addidas Shirt",
         shortDescription: "This is addidas shirt description.",
         description:"This is addidas shirt description.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ducimus.",
@@ -78,4 +88,3 @@ const products=[
         category:"shirt"
     },
 ]
-module.exports=products;
